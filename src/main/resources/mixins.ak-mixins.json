@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "ak.mcmod.ak_mixins.mixin",
+  "refmap": "mixins.ak-mixins.refmap.json",
+  "minVersion": "0.7",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinServerGamePacketListenerImpl"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
