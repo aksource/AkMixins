@@ -1,9 +1,11 @@
 package ak.mcmod.ak_mixins.mixin;
 
+import ak.mcmod.ak_mixins.AkMixins;
 import ak.mcmod.ak_mixins.ConfigUtils;
 import javax.annotation.Nonnull;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -11,10 +13,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * ServerGamePacketListenerImplに対する操作を行うクラス
+ * このクラス自体がServerGamePacketListenerImplになるので、thisからprivate変数等取れる
  * Created by A.K. on 2022/08/24.
  */
 @Mixin(ServerGamePacketListenerImpl.class)
 public class MixinServerGamePacketListenerImpl {
+
+  @Shadow private int tickCount;
 
   /**
    * handleMovePlayerのローカル変数f2のLOAD時の処理に割り込む
@@ -23,6 +28,8 @@ public class MixinServerGamePacketListenerImpl {
    */
   @ModifyVariable(method = "handleMovePlayer", at = @At(value = "LOAD"), name = "f2")
   private float hookHandleMovePlayerForMovingLimit(float f2) {
+    // thisの使用例 tickCountはprivate変数
+    AkMixins.LOGGER.info(this.tickCount);
     return ConfigUtils.COMMON.modifyPlayerServerMovingLimit ? (float) ConfigUtils.COMMON.playerServerMovingLimit : f2;
   }
 
