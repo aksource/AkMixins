@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
  * ServerGamePacketListenerImplに対する操作を行うクラス
- * このクラス自体がServerGamePacketListenerImplになるが、メンバー変数を呼び出す場合はShadowアノテーションを付けた変数を宣言する Created by A.K.
- * on 2022/08/24.
+ * このクラス自体がServerGamePacketListenerImplになるが、メンバー変数、メソッドを呼び出す場合はShadowアノテーションを付けた変数を宣言する Created by A.K.on
+ * 2022/08/24.
  */
 @Mixin(ServerGamePacketListenerImpl.class)
 public class MixinServerGamePacketListenerImpl {
