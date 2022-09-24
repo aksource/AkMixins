@@ -1,6 +1,5 @@
 package ak.mcmod.ak_mixins.mixin;
 
-import ak.mcmod.ak_mixins.AkMixins;
 import ak.mcmod.ak_mixins.ConfigUtils;
 import javax.annotation.Nonnull;
 import net.minecraft.server.level.ServerPlayer;
@@ -13,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 /**
- * ServerGamePacketListenerImplに対する操作を行うクラス
+ * {@link ServerGamePacketListenerImpl}に対する操作を行うクラス
  * このクラス自体がServerGamePacketListenerImplになるが、メンバー変数、メソッドを呼び出す場合はShadowアノテーションを付けた変数を宣言する Created by A.K.on
  * 2022/08/24.
  */
@@ -37,7 +36,7 @@ public class MixinServerGamePacketListenerImpl {
   @ModifyVariable(method = "handleMovePlayer", at = @At(value = "LOAD"), name = "f2")
   private float hookHandleMovePlayerForMovingLimit(float f2) {
     // thisの使用例 tickCountはprivate変数
-    AkMixins.LOGGER.info(this.tickCount);
+//    AkMixins.LOGGER.info(this.tickCount);
     // thisの使用例 getPlayerメソッドはServerPlayerConnectionインターフェースのメソッド
     this.getPlayer();
     return ConfigUtils.COMMON.modifyPlayerServerMovingLimit

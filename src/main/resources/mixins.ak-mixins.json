@@ -5,7 +5,13 @@
   "minVersion": "0.7",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinServerGamePacketListenerImpl"
+    "MixinServerGamePacketListenerImpl",
+    "MixinDiggingEnchantment",
+    "MixinDamageEnchantment",
+    "MixinDigDurabilityEnchantment",
+    "MixinLootBonusEnchantment",
+    "MixinEnchantmentHelper",
+    "MixinBlock"
   ],
   "client": [],
   "server": [],

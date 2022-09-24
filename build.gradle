@@ -18,7 +18,7 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 def mc_version = '1.19'
 def forge_version = '41.1.0'
-version = "${mc_version}-1.0.0.0" as Object
+version = "${mc_version}-1.0.1.0" as Object
 group = 'ak.mcmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'ak-mixins'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
